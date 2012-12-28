@@ -1,60 +1,60 @@
 import random
 
-def checkCords(Start, Stop, Cord):
+def check_cords(start, stop, cord):
   """ Checks if a given set of coordiantes are legal in a given grid."""
 
-  Condition = [False, False]
+  condition = [False, False]
 
   for i in xrange(2):
-    if Cord[i] < Start and Cord[i] > Stop:
-      Condition[i] = True
+    if cord[i] < start and cord[i] > stop:
+      condition[i] = True
 
-  return Condition
+  return condition
 
-def walk(Start, Stop):
+def walk(start, stop):
   """walk() does the calculation for the current position. Random reverses direction. Calls check to see if the drunk has crossed the walking grid."""
 
   # Current Coordinate.
-  Cord = []
-  Cord = [random.randint(Start, Stop), random.randint(Start, Stop)]
+  cord = []
+  cord = [random.randint(start, stop), random.randint(start, stop)]
 
   # Directional increments. For a 2D plane.
-  Increments = [[1, 0], [0, 1], [1, 1]]
+  increments = [[1, 0], [0, 1], [1, 1]]
 
   # The steps the drunk can take.
-  Steps = 100
-  while Steps > 0:
+  steps = 100
+  while steps > 0:
 
-    print("(x, y) - (%s, %s) ") %(str(Cord[0]), str(Cord[1]))
+    print("(x, y) - (%s, %s) ") %(str(cord[0]), str(cord[1]))
 
     # Decide which direction the drunk moves.
     while True:
 
       # Which increment the drunk uses.
-      Direction = random.randint(0, 2)
+      direction = random.randint(0, 2)
 
       # The drunk's orientation.
-      ReverseDirection = random.randint(0, 1)
-      if ReverseDirection == 1:
-        Increments[Direction][0] *= -1
-        Increments[Direction][1] *= -1
+      reverse_direction = random.randint(0, 1)
+      if reverse_direction == 1:
+        increments[direction][0] *= -1
+        increments[direction][1] *= -1
 
       # Perform Update
-      Cord[0] += Increments[Direction][0]
-      Cord[1] += Increments[Direction][1]
+      cord[0] += increments[direction][0]
+      cord[1] += increments[direction][1]
 
-      Current = checkCords(0, 100, Cord)
-      if not Current[0] and  not Current[1]:
+      current = check_cords(0, 100, cord)
+      if not current[0] and not current[1]:
         break;
       else:
         for i in xrange(2):
-          if Current[i] == 1:
-            if Cord[i] > Stop:
-             Cord[i] -= Increments[Direction][i]
+          if current[i] == 1:
+            if cord[i] > stop:
+             cord[i] -= increments[direction][i]
             else:
-              Cord[i] += Increments[Direction][i]
+             cord[i] += increments[direction][i]
 
-    Steps -= 1
+    steps -= 1
 
 
 if __name__ == '__main__':
