@@ -50,7 +50,7 @@ def walk(start, stop):
         for i in xrange(2):
           if current[i] == 1:
             if cord[i] >= stop:
-             cord[i] = cord[i] - 1
+             cord[i] -= 1
             elif cord[i] <= start:
              cord[i] += 1
 
