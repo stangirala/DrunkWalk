@@ -6,7 +6,7 @@ def check_cords(start, stop, cord):
   condition = [False, False]
 
   for i in xrange(2):
-    if cord[i] < start and cord[i] > stop:
+    if cord[i] < start or cord[i] > stop:
       condition[i] = True
 
   return condition
@@ -25,7 +25,7 @@ def walk(start, stop):
   steps = 100
   while steps > 0:
 
-    print("(x, y) - (%s, %s) ") %(str(cord[0]), str(cord[1]))
+    print("Step %d. (%s, %s) ") %(100 - steps, str(cord[0]), str(cord[1]))
 
     # Decide which direction the drunk moves.
     while True:
@@ -49,10 +49,10 @@ def walk(start, stop):
       else:
         for i in xrange(2):
           if current[i] == 1:
-            if cord[i] > stop:
-             cord[i] -= increments[direction][i]
-            else:
-             cord[i] += increments[direction][i]
+            if cord[i] >= stop:
+             cord[i] = cord[i] - 1
+            elif cord[i] <= start:
+             cord[i] += 1
 
     steps -= 1
 
