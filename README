@@ -1,1 +1,3 @@
-A small script that implements the Drunkard's Walk. A Markov Process with a three-way decision between left, right and diagonal on a 2D plane. Orientation too is random considering the act of moving between points is a big task :P.
+A small script that implements the Drunkard's Walk. A Markov Process with a three-way equal probability decision
+between left, right and diagonal on a 2D plane. Orientation too is random considering the act of moving between
+points is a big task :P.
